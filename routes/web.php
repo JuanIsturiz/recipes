@@ -25,3 +25,12 @@ Route::get('/register', [UserController::class, 'create']);
 
 // show login form view
 Route::get('/login', [UserController::class, 'login']);
+
+// register user
+Route::post('/users/new', [UserController::class, 'store']);
+
+// show login form view
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+// show login form view
+Route::post('/users/logout', [UserController::class, 'logout']);

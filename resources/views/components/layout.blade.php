@@ -18,11 +18,12 @@
 </head>
 
 <body class="bg-stone-50">
+    <x-flash_message />
     <main class="max-w-6xl mx-auto text-stone-800">
         <nav>
             <div class="flex justify-between items-center px-4 py-2 mb-8 border-b-2 border-b-rose-300">
                 <h1 class="uppercase text-3xl font-bold text-rose-400">recipes</h1>
-                <ul class="flex gap-4 text-lg">
+                <ul class="flex items-center gap-4 text-lg">
                     @auth
                         {{-- with user --}}
                         <li class="font-semibold"><span class="font-bold uppercase">Welcome
@@ -35,14 +36,14 @@
                         <li>
                             <form action="/recipes/public/users/logout" method="POST">
                                 @csrf
-                                <button type="submit">
+                                <button type="submit" class="bg-rose-400 p-2 rounded">
                                     <i class="fa-solid fa-door-closed"></i> Logout
                                 </button>
                             </form>
                         </li>
                     @else
                         {{-- no user --}}
-                        <a href="/recipes/public/recipes">
+                        <a href="/recipes/public/login">
                             <li class="hover:text-rose-600 duration-150 transition-colors">
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i> <span class="font-medium">Login</span>
                             </li>
