@@ -1,6 +1,6 @@
 <x-layout>
     <div class="text-center">
-        <div class="w-1/2 p-2 mx-auto bg-stone-100 rounded border border-stone-200">
+        <x-card class="w-1/2 mx-auto">
             <h2 class="uppercase text-3xl font-semibold text-rose-500">sign in</h2>
             <h3 class="text-xl font-medium text-stone-600">Log into your account here!</h3>
             <form action="/recipes/public/users/authenticate" method="POST">
@@ -26,6 +26,6 @@
                 <p class="mb-4 text-lg">Don't have an account yet? Sign Up <a class="text-rose-500 underline"
                         href="/recipes/public/register">here</a></p>
             </form>
-        </div>
+        </x-card>
     </div>
 </x-layout>

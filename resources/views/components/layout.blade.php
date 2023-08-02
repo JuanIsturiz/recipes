@@ -19,24 +19,25 @@
 
 <body class="bg-stone-50">
     <x-flash_message />
-    <main class="max-w-6xl mx-auto text-stone-800">
+    <main class="text-stone-800">
         <nav>
-            <div class="flex justify-between items-center px-4 py-2 mb-8 border-b-2 border-b-rose-300">
-                <h1 class="uppercase text-3xl font-bold text-rose-400">recipes</h1>
+            <div class="flex justify-between items-center px-4 py-2 mb-8 border-b-2 border-b-rose-400">
+                <h1 class="uppercase text-3xl font-bold text-rose-500">recipes</h1>
                 <ul class="flex items-center gap-4 text-lg">
                     @auth
                         {{-- with user --}}
-                        <li class="font-semibold"><span class="font-bold uppercase">Welcome
+                        <li class="font-semibold"><span class="font-bold uppercase">hi!
                                 {{ auth()->user()->name }}</span>
                         </li>
                         <a href="/recipes/public/manage">
                             <li class="hover:text-rose-600 duration-150 transition-colors"><i class="fa-solid fa-gear"></i>
-                                Manage Listings</li>
+                                Manage Recipes</li>
                         </a>
                         <li>
                             <form action="/recipes/public/users/logout" method="POST">
                                 @csrf
-                                <button type="submit" class="bg-rose-400 p-2 rounded">
+                                <button type="submit"
+                                    class="bg-rose-500 text-white p-2 rounded font-medium hover:bg-rose-600 duration-150 transition-colors">
                                     <i class="fa-solid fa-door-closed"></i> Logout
                                 </button>
                             </form>
@@ -56,8 +57,21 @@
                 </ul>
             </div>
         </nav>
-        {{ $slot }}
-        <footer>footer</footer>
+        <div class="px-2 mb-20">
+            {{ $slot }}
+        </div>
+        <footer>
+            <div
+                class="fixed bottom-0 left-0 w-full items-center grid grid-rows-1 grid-cols-2 content-center bg-rose-500 p-3">
+                <p class="text-start text-white font-medium text-lg">&copy; Copyright Juan Isturiz</p>
+                <a class="justify-self-end"href="/recipes/public/add">
+                    <button
+                        class=" bg-white p-2 rounded text-rose-500 font-medium text-lg uppercase hover:animate-pulse">add
+                        new
+                        recipe</button>
+                </a>
+            </div>
+        </footer>
     </main>
 </body>
 
