@@ -24,6 +24,9 @@ Route::get('/', function () {
 // show new recipe form
 Route::get('/add', [RecipeController::class, 'create'])->middleware('auth');
 
+// store new recipe
+Route::post('/add', [RecipeController::class, 'store'])->middleware('auth');
+
 // show register form view
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
