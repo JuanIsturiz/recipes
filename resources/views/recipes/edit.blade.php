@@ -2,13 +2,14 @@
         <x-card class="w-2/3 p-2 mx-auto">
             <h2 class="uppercase text-3xl font-semibold text-rose-500">new recipe</h2>
             <h3 class="text-xl font-medium text-stone-600">Tell us about your recipe!</h3>
-            <form action="/recipes/public/recipes/new" method="POST" enctype="multipart/form-data">
+            <form action="/recipes/public/recipes/{{ $recipe->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 {{-- name --}}
                 <div class="flex flex-col gap-2 items-start mb-4">
                     <label class="capitalize text-xl font-medium" for="name">name</label>
                     <input class="w-full text-lg p-1 border border-stone-200 rounded" type="text" name="name"
-                        id="name" placeholder="Mac & Cheese" value="{{ old('name') }}">
+                        id="name" placeholder="Mac & Cheese" value="{{ $recipe->name }}">
                     @error('name')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -43,7 +44,7 @@
                     <label class="capitalize text-xl font-medium" for="ingredients">ingredients (Comma
                         Separated)</label>
                     <textarea class="w-full text-lg p-1 border border-stone-200 rounded" name="ingredients" id="ingredients" cols="30"
-                        rows="5">{{ old('ingredients') }}</textarea>
+                        rows="5">{{ $recipe->ingredients }}</textarea>
                     @error('ingredients')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -52,7 +53,7 @@
                 <div class="flex flex-col gap-2 items-start mb-4">
                     <label class="capitalize text-xl font-medium" for="steps">steps (Comma Separated)</label>
                     <textarea class="w-full text-lg p-1 border border-stone-200 rounded" name="steps" id="steps" cols="30"
-                        rows="5">{{ old('steps') }}</textarea>
+                        rows="5">{{ $recipe->steps }}</textarea>
                     @error('steps')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -86,7 +87,7 @@
                         Tags (Comma Separated)
                     </label>
                     <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"
-                        placeholder="Example: Tasty, Fast, Pasta, etc" value="{{ old('tags') }}" />
+                        placeholder="Example: Tasty, Fast, Pasta, etc" value="{{ $recipe->tags }}" />
                     @error('tags')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -95,7 +96,7 @@
                 <div class="flex flex-col gap-2 items-start mb-4">
                     <label class="capitalize text-xl font-medium" for="description">description</label>
                     <textarea class="w-full text-lg p-1 border border-stone-200 rounded" name="description" id="description"
-                        cols="30" rows="5">{{ old('description') }}</textarea>
+                        cols="30" rows="5">{{ $recipe->description }}</textarea>
                     @error('description')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -111,7 +112,7 @@
                     @enderror
                 </div>
                 <button
-                    class="text-xl text-white uppercase p-2 mb-4 bg-rose-500 rounded transition-colors duration-150 hover:bg-rose-400">ADD
+                    class="text-xl text-white uppercase p-2 mb-4 bg-rose-500 rounded transition-colors duration-150 hover:bg-rose-400">UPDATE
                     RECIPE</button>
 
             </form>

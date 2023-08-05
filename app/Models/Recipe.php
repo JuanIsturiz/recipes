@@ -9,7 +9,17 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'dificulty', 'ingredients', 'steps', 'time', 'description', 'tags'];
+    protected $fillable = [
+        'name',
+        'difficulty',
+        'ingredients',
+        'steps',
+        'time',
+        'description',
+        'tags',
+        'user_id',
+        'image'
+    ];
 
     public function scopeFilter($query, array $filters)
     {
@@ -23,7 +33,7 @@ class Recipe extends Model
         }
     }
 
-    // // relationship to user
+    // relationship to user
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

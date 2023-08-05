@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        // recipes schema
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('image')->nullable();
-            $table->string('dificulty');
+            $table->string('difficulty');
             $table->string('ingredients');
             $table->string('steps');
             $table->string('time');

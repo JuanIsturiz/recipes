@@ -22,14 +22,17 @@
     <main class="text-stone-800">
         <nav>
             <div class="flex justify-between items-center px-4 py-2 mb-8 border-b-2 border-b-rose-400">
-                <h1 class="uppercase text-3xl font-bold text-rose-500">recipes</h1>
+                <h1
+                    class="uppercase text-3xl font-bold text-rose-500 transition-transform duration-150 hover:translate-x-4">
+                    <a href="/recipes/public">recipes</a>
+                </h1>
                 <ul class="flex items-center gap-4 text-lg">
                     @auth
                         {{-- with user --}}
                         <li class="font-semibold"><span class="font-bold uppercase">hi!
                                 {{ auth()->user()->name }}</span>
                         </li>
-                        <a href="/recipes/public/manage">
+                        <a href="/recipes/public/recipes/manage">
                             <li class="hover:text-rose-600 duration-150 transition-colors"><i class="fa-solid fa-gear"></i>
                                 Manage Recipes</li>
                         </a>
@@ -37,8 +40,8 @@
                             <form action="/recipes/public/users/logout" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="bg-rose-500 text-white p-2 rounded font-medium hover:bg-rose-600 duration-150 transition-colors">
-                                    <i class="fa-solid fa-door-closed"></i> Logout
+                                    class="bg-rose-500 text-white py-2 px-4 rounded font-medium hover:bg-rose-600 duration-150 transition-colors">
+                                    <i class="fa-solid fa-door-closed"></i> <span class="hidden md:inline">Logout</span>
                                 </button>
                             </form>
                         </li>

@@ -1,6 +1,6 @@
 <x-layout>
     <div class="text-center">
-        <x-card class="w-1/2 mx-auto">
+        <x-card class="w-1/2 p-2 mx-auto">
             <h2 class="uppercase text-3xl font-semibold text-rose-500">sign in</h2>
             <h3 class="text-xl font-medium text-stone-600">Log into your account here!</h3>
             <form action="/recipes/public/users/authenticate" method="POST">

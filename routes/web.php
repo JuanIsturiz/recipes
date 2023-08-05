@@ -17,15 +17,28 @@ use Illuminate\Support\Facades\Route;
 
 
 // show index view
-Route::get('/', function () {
-    return view('recipes.index');
-});
+Route::get('/', [RecipeController::class, 'index']);
 
 // show new recipe form
 Route::get('/add', [RecipeController::class, 'create'])->middleware('auth');
 
 // store new recipe
-Route::post('/add', [RecipeController::class, 'store'])->middleware('auth');
+Route::post('/recipes/new', [RecipeController::class, 'store'])->middleware('auth');
+
+// show edit form
+Route::get('/recipes/{recipe}/edit', [RecipeController::class, 'edit'])->middleware('auth');
+
+// update recipe
+Route::put('/recipes/{recipe}', [RecipeController::class, 'update'])->middleware('auth');
+
+// delete recipe
+Route::delete('/recipes/{recipe}', [RecipeController::class, 'destroy'])->middleware('auth');
+
+// show manage recipes view
+Route::get('/recipes/manage', [RecipeController::class, 'manage'])->middleware('auth');
+
+// show single recipe
+Route::get('/recipes/{recipe}', [RecipeController::class, 'show']);
 
 // show register form view
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
